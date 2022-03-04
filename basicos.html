@@ -1,215 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fundamentos javaScript</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Fundamentos javaScript</h1>
 
     <script>
-    //Ejercicios de logica
-    /* 1) Programa una función que cuente el número de 
+      //Ejercicios de logica
+      /* 1) Programa una función que cuente el número de 
     caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") 
     devolverá 10. */
 
+      const contarCadena = (cadena = "") =>
+        !cadena
+          ? console.warn("No se ha dijitado ninguna cadena")
+          : console.info(`La cadena "${cadena}" tiene ${cadena.length}`);
+      contarCadena("hola mundo");
 
-        
-
-        const contarCadena=(cadena="")=>(!cadena)? console.warn("No se ha dijitado ninguna cadena"): console.info(`La cadena "${cadena}" tiene ${cadena.length}`)
-            contarCadena("hola mundo") 
-
-
-
-    /* 2) Programa una función que te devuelva el texto recortado según el número 
+      /* 2) Programa una función que te devuelva el texto recortado según el número 
         de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola". */
-            
 
-        const recortar=(cadena="", longitud)=>(!cadena)? console.warn("no se ha digitado ninguna cadena"):(longitud===undefined)?console.log("no se ha ingresado la longitud para recortar el texto"):console.info(cadena.slice(0,longitud));
-            recortar("hola mundo",6) 
+      const recortar = (cadena = "", longitud) =>
+        !cadena
+          ? console.warn("no se ha digitado ninguna cadena")
+          : longitud === undefined
+          ? console.log("no se ha ingresado la longitud para recortar el texto")
+          : console.info(cadena.slice(0, longitud));
+      recortar("hola mundo", 6);
 
-
-
-
-    /* 3) Programa una función que dada una String te devuelva un Array de textos 
+      /* 3) Programa una función que dada una String te devuelva un Array de textos 
     separados por cierto caracter, pe. miFuncion('hola que tal', ' ') 
     devolverá ['hola', 'que', 'tal']. */
 
-    
-        const cadenaArrays=(cadena="", separador=undefined)=>(!cadena)? console.warn("no se ha digitado ninguna cadena"):(separador===undefined)?console.warn("no ingresaste el caracter separador"):console.info(cadena.split(separador))
-                    cadenaArrays("Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa sapiente eius neque aspernatur, non ipsam cum alias illo laudantium odio, sunt, voluptatem aperiam animi aut dicta hic suscipit sequi autem.", " ")
-                    cadenaArrays("Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic", ",")
-    
-    
-    /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) 
+      const cadenaArrays = (cadena = "", separador = undefined) =>
+        !cadena
+          ? console.warn("no se ha digitado ninguna cadena")
+          : separador === undefined
+          ? console.warn("no ingresaste el caracter separador")
+          : console.info(cadena.split(separador));
+      cadenaArrays(
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa sapiente eius neque aspernatur, non ipsam cum alias illo laudantium odio, sunt, voluptatem aperiam animi aut dicta hic suscipit sequi autem.",
+        " "
+      );
+      cadenaArrays(
+        "Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic",
+        ","
+      );
+
+      /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) 
             devolverá Hola Mundo Hola Mundo Hola Mundo. */
 
+      const repetirTexto = (texto = "", veces = undefined) => {
+        if (!texto) return console.warn("el texto esta vacio");
 
-            const repetirTexto=(texto="", veces=undefined)=>{
-                    if(!texto) return console.warn("el texto esta vacio");
-                    
-                    if(veces===undefined) return console.warn("No se ingreso el numero de veces a repetir");
-                    
-                    if(veces===0) return console.warn("El numero de veces no puede ser 0");
+        if (veces === undefined)
+          return console.warn("No se ingreso el numero de veces a repetir");
 
-                    if(Math.sign(veces)===-1) return console.warn("el numero de veces no puede se negativo")
-                    
-                    for(let i=1; i<=veces; i++){
-                        console.info( `${texto}, ${i}`)
+        if (veces === 0)
+          return console.warn("El numero de veces no puede ser 0");
 
-                    }
-                
-                }
-                repetirTexto("hola mundo", 3) 
+        if (Math.sign(veces) === -1)
+          return console.warn("el numero de veces no puede se negativo");
 
+        for (let i = 1; i <= veces; i++) {
+          console.info(`${texto}, ${i}`);
+        }
+      };
+      repetirTexto("hola mundo", 3);
 
-
-
-/*  5) Programa una función que invierta las palabras de 
+      /*  5) Programa una función que invierta las palabras de 
         una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH". */
 
+      const invertirCadena = (cadena = "") =>
+        !cadena
+          ? console.warn("La cadena de texto no puede ser vacia")
+          : console.info(cadena.split("").reverse().join(""));
+      invertirCadena("hola mundo");
 
-        const invertirCadena=(cadena="")=>(!cadena)?console.warn("La cadena de texto no puede ser vacia"):console.info(cadena.split("").reverse().join(""))
-                invertirCadena("hola mundo")
-
-
-
-    /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto
+      /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto
         largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2. */
-        
 
-
-        const contarCadena2=(cadena="", palabra="")=>{
-            let separador=" ";
-            let separado=[];
-            let contador=0;
-            let posicion=[];
-            if(!cadena){
-                return console.warn("La cadena esta vacia")
-            }
-
-            if(!palabra){
-                return console.warn("la palabra a buscar esta vacia")
-            }
-
-            separado=cadena.split(separador)
-            for(let i=0; i<separado.length; i++){
-                if(separado[i]===palabra){
-                contador++;
-                posicion.push(i+1);
-                }
-            }
-
-            console.info(`La palabra "${palabra}" aparece ${contador} veces y se encuentra en la posición ${posicion}`);
-
+      const contarCadena2 = (cadena = "", palabra = "") => {
+        let separador = " ";
+        let separado = [];
+        let contador = 0;
+        let posicion = [];
+        if (!cadena) {
+          return console.warn("La cadena esta vacia");
         }
-        let texto=`ll Un texto es una composición composición composición composición de signos codificados en un sistema de escritura que forma una unidad de sentido.
+
+        if (!palabra) {
+          return console.warn("la palabra a buscar esta vacia");
+        }
+
+        separado = cadena.split(separador);
+        for (let i = 0; i < separado.length; i++) {
+          if (separado[i] === palabra) {
+            contador++;
+            posicion.push(i + 1);
+          }
+        }
+
+        console.info(
+          `La palabra "${palabra}" aparece ${contador} veces y se encuentra en la posición ${posicion}`
+        );
+      };
+      let texto = `ll Un texto es una composición composición composición composición de signos codificados en un sistema de escritura que forma una unidad de sentido.
 
 También es una composición de caracteres imprimibles (con grafema) generados por un algoritmo de cifrado que, aunque no tienen sentido para cualquier persona, sí puede ser descifrado por su destinatario original. En otras palabras, un texto es un entramado de signos con una intención comunicativa que adquiere sentido en determinado contexto.
 
 Las ideas que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de alto nivel, como los títulos y subtítulos, la secuencia de párrafos, etc. En contraste, las «microproposiciones» son los elementos coadyuvantes de la cohesión de un texto, pero a nivel más particular o local. Esta distinción fue realizada por Teun van Dijk en 1980.1​
 
-El nivel microestructural o local está asociado con el concepto de cohesión. Se refiere a uno de los fenómenos propios de la coherencia, el de las relaciones particulares y locales que se dan entre elementos lingüísticos, tanto los que remiten unos a otros como los que tienen la función de conectar y organizar.`
-        contarCadena2(texto, "composición") 
-        
+El nivel microestructural o local está asociado con el concepto de cohesión. Se refiere a uno de los fenómenos propios de la coherencia, el de las relaciones particulares y locales que se dan entre elementos lingüísticos, tanto los que remiten unos a otros como los que tienen la función de conectar y organizar.`;
+      contarCadena2(texto, "composición");
 
+      /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true. */
 
+      const palindroma = (cadena = "") => {
+        let error = "";
 
-    /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true. */
+        cadenaMayuscula = cadena.toUpperCase().trim().replace(/ /g, "");
+        let cadenaInv = cadenaMayuscula.split("").reverse().join("");
+        if (!cadena) {
+          error = console.warn("La cadena esta vacia");
+          return error;
+        }
 
+        return cadenaMayuscula === cadenaInv
+          ? console.log("Es palindroma")
+          : console.info("No es Palindroma");
+      };
+      palindroma("acaso hubo buhos aca");
 
-        const palindroma=(cadena="")=>{
-                    let error="";
-
-                cadenaMayuscula=cadena.toUpperCase().trim().replace(/ /g, "");
-                let cadenaInv=cadenaMayuscula.split("").reverse().join("");
-                if(!cadena){
-                    error=console.warn("La cadena esta vacia")
-                    return error;
-                }
-                
-                return (cadenaMayuscula===cadenaInv)? console.log("Es palindroma"): console.info("No es Palindroma")
-            }
-            palindroma("acaso hubo buhos aca")
-        
-
-
-
-/*                
+      /*                
 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5. */
-            const eliPatron=(cadena, palabra)=>{
-                if(!cadena){
-                    return console.warn("La cadena esta vacia")
-                }
+      const eliPatron = (cadena, palabra) => {
+        if (!cadena) {
+          return console.warn("La cadena esta vacia");
+        }
 
-                if(!palabra){
-                    return console.warn("el patron que se desea eliminar esta vacia")
-                }
-                console.log("La cadena quedo de la siguiente manera: "+cadena.replace(new RegExp(palabra, "ig"), ""))
-                
-            }
-    eliPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") 
+        if (!palabra) {
+          return console.warn("el patron que se desea eliminar esta vacia");
+        }
+        console.log(
+          "La cadena quedo de la siguiente manera: " +
+            cadena.replace(new RegExp(palabra, "ig"), "")
+        );
+      };
+      eliPatron("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
 
-    
-    
+      /*  9) Programa una función que obtenga un numero aleatorio entre 501 y 600. */
 
-    
-    /*  9) Programa una función que obtenga un numero aleatorio entre 501 y 600. */
-    
-            const aleatorio=()=>console.log("El numero aleatorio es: "+Math.round(Math.random()*(601-501)+501));
-            aleatorio();
+      const aleatorio = () =>
+        console.log(
+          "El numero aleatorio es: " +
+            Math.round(Math.random() * (601 - 501) + 501)
+        );
+      aleatorio();
 
-
-/*  10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), 
+      /*  10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), 
             pe. miFuncion(2002) devolverá true. */
 
+      const capicua = (numero = 0) => {
+        if (numero === undefined) {
+          return console.log("no se ha ingresado un numero");
+        }
+        if (typeof numero !== "number")
+          return console.error(
+            `El valor "${numero}" ingresado no es un numero`
+          );
+        numero = numero.toString();
+        let alReves = numero.split("").reverse().join("");
+        return numero === alReves
+          ? console.info(
+              `Si es capícua, Número original ${numero}, Número al revés ${alReves}`
+            )
+          : console.info(
+              `No es capícua, Número original ${numero}, Número al revés ${alReves}`
+            );
+      };
+      capicua(212.212);
 
-            const capicua=(numero=0)=>{
-                if(numero===undefined){
-                    return console.log("no se ha ingresado un numero");
-                }   
-                if(typeof numero!=="number") return console.error(`El valor "${numero}" ingresado no es un numero`);
-                numero=numero.toString();
-                let alReves=numero.split("").reverse().join("")
-                return (numero===alReves)?console.info(`Si es capícua, Número original ${numero}, Número al revés ${alReves}`):console.info(`No es capícua, Número original ${numero}, Número al revés ${alReves}`)
-            }
-            capicua(212.212);
-
-
-    /* 
+      /* 
     11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, 
             se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120. */
-    
-            const factorial=(numero=undefined)=>{
-                let num=numero;
-                if(numero===undefined){
-                    return console.warn("No se ha ingresado un numero")
-                }
 
-                if(typeof numero !== "number"){
-                    return console.error(`El valor "${numero}" ingresado no es un numero`)
-                }
+      const factorial = (numero = undefined) => {
+        let num = numero;
+        if (numero === undefined) {
+          return console.warn("No se ha ingresado un numero");
+        }
 
-                if(Math.sign(numero)===-1){
-                    return console.error("No se pueden sacar factorial a numeros negativos")
-                }
-                
-                if(numero===0){
-                    numero=1
-                    return console.log(numero)
-                }
-                for(i=(numero-1); i>=2; i--){
-                    numero*=i;
-                }
-                console.log(`El factorial de ${num} es ${numero}`)
-            }
+        if (typeof numero !== "number") {
+          return console.error(
+            `El valor "${numero}" ingresado no es un numero`
+          );
+        }
 
-        factorial(5)
-    
-    
+        if (Math.sign(numero) === -1) {
+          return console.error(
+            "No se pueden sacar factorial a numeros negativos"
+          );
+        }
+
+        if (numero === 0) {
+          numero = 1;
+          return console.log(numero);
+        }
+        for (i = numero - 1; i >= 2; i--) {
+          numero *= i;
+        }
+        console.log(`El factorial de ${num} es ${numero}`);
+      };
+
+      factorial(4);
+
+      
+
+      /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true. */
+
+      const primo = (numero = 0) => {
+        let contador = 0;
+        for (i = numero; i >= 1; i--) {
+          if (numero % i === 0) {
+            contador++;
+          }
+        }
+        if (contador === 2) {
+          return console.log("Es un numero primo");
+        } else {
+          return console.log("No es un numero primo");
+        }
+      };
+      primo(3);
+
+      /* 
+13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar. */
+
+      const par = (numero = undefined) => {
+        let imprimir = "";
+
+        if (numero === undefined) {
+          return console.warn("El espacio esta vacio");
+        }
+
+        if (typeof numero !== "number") {
+          return console.error(`El dato "${numero}" no es un numero`);
+        }
+
+        if ((numero % 2) === 0) {
+          return console.info("Es un numero par")
+        } else {
+          return console.info("No es un numero par");
+        }
+
+      
+      }
+
+      par(4);
+
+      /*     
+
+
+14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F. */
+
+    const convertidor = (temperatura = 0, medida="C") => {
+        let imprimir;
+
+        if (temperatura === undefined) {
+          return "no se ha ingresado la temperatura";
+        }
+
+        if (typeof temperatura !== "number") {
+          return `El dato ingresado "${temperatura}" no es un dato valido`;
+        }
+
+        switch (medida) {
+          case "F":
+            temperatura = (temperatura * 9) / 5 + 32;
+            imprimir = "La temperatura es " + temperatura + "F";
+            break;
+
+          case "C":
+            temperatura = temperatura = ((temperatura - 32) * 5) / 9;
+            imprimir = "La temperatura es " + Math.round(temperatura)+" C";
+            break;
+
+            default:
+            imprimir="No hay registro de datos ingresados"
+            break;
+        }
+        return imprimir;
+      };
+      console.log(convertidor(77));
     </script>
-
-</body>
+  </body>
 </html>
