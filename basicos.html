@@ -263,10 +263,7 @@ El nivel microestructural o local está asociado con el concepto de cohesión. S
 
       par(4);
 
-      /*     
-
-
-14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F. */
+      /*14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F. */
 
     const convertidor = (temperatura = 0, medida="C") => {
         let imprimir;
@@ -297,6 +294,54 @@ El nivel microestructural o local está asociado con el concepto de cohesión. S
         return imprimir;
       };
       console.log(convertidor(77));
+
+    /*15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.*/
+      const convertirDecBin=(numero=undefined, base=undefined)=>{
+        
+        let resto;
+        var Array=[]
+        let decimal=0;
+        switch (base){
+          case 2:
+            let num=numero.toString();
+            let entero=0;
+              for(i=0; i<num.length; i++){
+              entero=parseInt(num[i]);
+              Array.push(entero);
+              if(Array[i]>1){
+                return console.log("No es un numero binario");
+              }
+            decimal=(decimal*2)+Array[i];
+            }
+            console.log(decimal);
+            break;
+
+
+          case 10:
+          for(i=numero; i=(numero>1); i--){
+                resto=Math.floor(numero%2);
+                division=Math.floor(numero/=2);
+                console.log(division)
+                Array.push(resto);
+              }
+              let binario=Array.reverse().join("");
+              console.log(binario);
+            break;
+
+          default:
+            console.log("no se encontro la base que se desea convertir");
+            break;
+        }
+
+      }
+      convertirDecBin(10,2)
+
+
+      /*
+      16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+      17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+      */
+
     </script>
   </body>
 </html>
