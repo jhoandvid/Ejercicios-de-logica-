@@ -295,53 +295,90 @@ El nivel microestructural o local está asociado con el concepto de cohesión. S
       };
       console.log(convertidor(77));
 
-    /*15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.*/
-      const convertirDecBin=(numero=undefined, base=undefined)=>{
-        
-        let resto;
-        var Array=[]
-        let decimal=0;
-        switch (base){
-          case 2:
-            let num=numero.toString();
-            let entero=0;
-              for(i=0; i<num.length; i++){
-              entero=parseInt(num[i]);
-              Array.push(entero);
-              if(Array[i]>1){
-                return console.log("No es un numero binario");
+  /*15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.*/
+    const convertirDecBin=(numero=undefined, base=undefined)=>{
+  if(numero===undefined)return console.warn("No se ha agregado el numero a convertir")
+
+  if(typeof numero !=="number") return console.error(`El valor "${numero}" ingresado, No es un numero`)
+
+  if(base===undefined) return console.warn("No se ha ingresado la base a convertir")
+
+  if(typeof base !=="number") return console.error(`El valor "${base}" ingresado, No es un numero`)
+          let resto;
+          var Array=[]
+          let decimal=0;
+          switch (base){
+            case 2:
+              let num=numero.toString();
+              let entero=0;
+                for(i=0; i<num.length; i++){
+                entero=parseInt(num[i]);
+                Array.push(entero);
+                if(Array[i]>1){
+                  return console.log("No es un numero binario");
+                }
+              decimal=(decimal*2)+Array[i];
               }
-            decimal=(decimal*2)+Array[i];
-            }
-            console.log(decimal);
-            break;
+              console.log(`la conversión de "${numero}" a decimal es: ${decimal}`);
+              break;
 
 
-          case 10:
-          for(i=numero; i=(numero>1); i--){
-                resto=Math.floor(numero%2);
-                division=Math.floor(numero/=2);
-                console.log(division)
-                Array.push(resto);
-              }
-              let binario=Array.reverse().join("");
-              console.log(binario);
-            break;
+            case 10:
+            let binario
+            let nume=numero; //rescata el valor de numero
+            for(i=numero; numero>=1; i--){
 
-          default:
-            console.log("no se encontro la base que se desea convertir");
-            break;
+                  resto=Math.floor(numero%2);
+                  division=Math.floor(numero/=2);
+                  Array.push(resto);
+                }
+                binario=Array.reverse().join("");
+                console.log(`la conversión de "${nume}" a binario es: ${binario}`);
+              break;
+
+            default: 
+              console.log("no se encontro la base que se desea convertir");
+              break;
+          }
+
         }
+convertirDecBin();
+convertirDecBin("2");
+convertirDecBin(100);
+convertirDecBin(100, "2");
+convertirDecBin(101, 2);
+convertirDecBin(4, 10);
+convertirDecBin(114, 10);
+convertirDecBin(101, 10);
 
-      }
-      convertirDecBin(10,2)
+/*15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10. Otra Forma...*/
+const convertirDecBin2=(numero=undefined, base=undefined)=>{
+  if(numero===undefined)return console.warn("No se ha agregado el numero a convertir")
 
+  if(typeof numero !=="number") return console.error(`El valor "${numero} ingresado, No es un numero"`)
 
-      /*
+  if(base===undefined) return console.warn("No se ha ingresado la base a convertir")
+
+  if(typeof base !=="number") return console.error(`El valor "${base}" ingresado, No es un numero`)
+  
+  if(base===2){
+    return console.info(`${numero} base ${base}=${parseInt(numero, base)} base 10 `)
+  }else if(base===10){
+    return console.info(`${numero} base ${base}=${numero.toString(2)} base 2 `)
+  }
+}
+convertirDecBin2();
+convertirDecBin2("2");
+convertirDecBin2(100);
+convertirDecBin2(100, "2");
+convertirDecBin2(101, 2);
+convertirDecBin2(4, 10);
+convertirDecBin2(114, 10);
+convertirDecBin2(101, 10);
+/*
       16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
       17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
       */
-
     </script>
   </body>
 </html>
