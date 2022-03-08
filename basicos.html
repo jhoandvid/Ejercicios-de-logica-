@@ -346,7 +346,7 @@ convertirDecBin();
 convertirDecBin("2");
 convertirDecBin(100);
 convertirDecBin(100, "2");
-convertirDecBin(101, 2);
+convertirDecBin(101, 4);
 convertirDecBin(4, 10);
 convertirDecBin(114, 10);
 convertirDecBin(101, 10);
@@ -375,10 +375,65 @@ convertirDecBin2(101, 2);
 convertirDecBin2(4, 10);
 convertirDecBin2(114, 10);
 convertirDecBin2(101, 10);
-/*
-      16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
-      17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
-      */
+
+/*16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800. */
+
+  const descuento=(precio=undefined, descuento=undefined)=>{
+    let precioDescuneto=precio*(descuento/100);
+    let precioFinal=precio-precioDescuneto;
+
+    if(precio===undefined)return console.warn("No se ha agregado el precio del producto");
+    if(typeof precio !== "number") return console.error(`El dato ${precio} ingrasado no es un un dato valido`);
+    if(descuento===undefined)return console.warn("No se ha agregado el descuento del producto");
+    if(typeof descuento !== "number") return console.error(`El dato ${descuento} ingrasado no es un un dato valido`);
+    if(precio===0) return console.error("El monto no puede se 0")
+    if(Math.sign(precio)===-1) return console.error("El monto no puede ser negativo")  
+    
+    console.log(`El precio total a pagar es ${precioFinal}`)
+
+  }
+
+  descuento(10000,10);
+
+      /*17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).*/
+      function fecha(fecha=undefined){
+        if(fecha===undefined) return console.warn("No se ha ingresado la fecha ")
+        if( !(fecha instanceof Date)) return console.error("El valor ingresado no es una fecha valida ")
+
+      let fecha2=new Date();
+      let mesDelDiaActual= Math.floor((fecha2.getDate()/365));
+      let mesActual=Math.floor((fecha2.getMonth()+1)/12);
+      let añoActual=Math.floor(fecha2.getFullYear());
+      let añoTotal=mesDelDiaActual+mesActual+añoActual;
+
+      let mesDelDia=Math.floor((fecha.getDate()/365));
+      let mes=Math.floor((fecha.getMonth()/12));
+      let año=Math.floor(fecha.getFullYear());
+      let añoTotal2=mesDelDia+mes+año;
+
+      console.log(`Han pasado ${añoTotal-añoTotal2} años desde ${fecha.getFullYear()}` )
+      
+      }
+
+      fecha(new Date(2002,2,17))
+      /*17) (Otra Forma) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).*/
+        const calcularAnios=(fecha=undefined)=>{
+        if(fecha===undefined)return console.warn("No ingreso la fecha");
+        if(!(fecha instanceof Date)) return console.error("El dato de fecha ingresado no es valido");
+
+        let hoymenosFecha=new Date().getTime()-fecha.getTime();
+        aniosEnMS=1000*60*60*24*365;
+        aniosHumanos=Math.floor(hoymenosFecha/aniosEnMS);
+
+        return(Math.sign(aniosHumanos)===-1)
+        ? console.info(`Flatan ${Math.abs(aniosHumanos)} años para el ${fecha.getFullYear()}.`)
+        :(Math.sign(aniosEnMS)===1) 
+        ?console.info(`Han pasado ${Math.abs(aniosHumanos)} años, desde ${fecha.getFullYear()}.`) 
+        :console.warn(`Estamos en el año actual ${fecha.getFullYear()}`)
+      }
+      calcularAnios(new Date(2002,2,17))
+          
+    
     </script>
   </body>
 </html>
