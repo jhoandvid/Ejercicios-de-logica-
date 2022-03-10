@@ -435,7 +435,60 @@ convertirDecBin2(101, 10);
         :console.warn(`Estamos en el año actual ${fecha.getFullYear()}`)
       }
       calcularAnios(new Date(2023,2,17))
-          
+/* 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5. */
+      const contadorVocalConso=(cadena="")=>{
+        let consonante=0;
+        let vocales=0;
+        if(!cadena) return console.warn("No ingresaste una cadena de texto");
+
+      if(typeof cadena!== "string") return console.log(`El valor "${cadena}" ingresado, No es una cadena de texto`)
+        cadena=cadena.toLocaleLowerCase();
+        for(let letra of cadena){
+          if(/[aeiouáéíóú]/.test(letra)){
+            vocales++;
+          }
+
+          if(/[bcdfghjklmnñpqrstvwxyz]/.test(letra)){
+            consonante++;
+          }
+        }
+        return console.log({
+          cadena,
+          consonante,
+          vocales
+
+        })
+      }
+      contadorVocalConso("hola mundo")
+
+
+      /* 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero. */
+        const validarNombre=(cadena="")=>{
+          if(typeof cadena==="number") return console.error(`"${cadena}" no es un dato valido`)
+          if(cadena==="")return console.warn("no se ha agregado ningun nombre")
+          let expReg=/^[A-Za-zÑñÁÉÍÓÚáéíóú\s]+$/g.test(cadena);
+
+          return (expReg)? console.info(`"${cadena}", es un nombre válido`)
+          :console.warn(`${cadena} No es un nombre valido`);
+
+        }
+
+        validarNombre("jonathan mircha34")
+
+      /*20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.  */
+      const validarEmail=(email="")=>{
+          if(typeof email==="number") return console.error(`"${email}" no es un email valido`)
+          if(email==="")return console.warn("no se ha agregado ningun email")
+          let expReg=/[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(email);
+
+          return (expReg)? console.info(`"${email}", es un gmail válido`)
+          :console.error(`${email} No es un email valido`);
+
+        }
+
+        validarEmail("juan@gmail.com")
+   
+        
     
     </script>
   </body>
